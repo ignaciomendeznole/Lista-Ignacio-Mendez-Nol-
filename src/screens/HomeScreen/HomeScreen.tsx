@@ -11,7 +11,8 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import { ShoppingItem } from '../components/ShoppingItem';
+import { ShoppingItem } from '../../components/ShoppingItem';
+import styles from './styles';
 
 export const HomeScreen = () => {
   const [shoppingProduct, setShoppingProduct] = useState<string>('');
@@ -37,7 +38,9 @@ export const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.listWrapper}>
-        <Text style={styles.sectionTitle}>Shopping List</Text>
+        <Text style={styles.sectionTitle}>
+          Shopping List ({shoppingList.length})
+        </Text>
       </View>
       <FlatList
         data={shoppingList}
@@ -68,49 +71,3 @@ export const HomeScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e8eaed',
-    marginHorizontal: 15,
-  },
-  listWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-    marginBottom: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  sectionTitle: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  addProductWrapper: {
-    position: 'absolute',
-    bottom: 60,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  input: {
-    paddingVertical: 15,
-    width: 250,
-    backgroundColor: 'white',
-    borderRadius: 60,
-    borderColor: '#c0c0c0',
-    paddingHorizontal: 10,
-  },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    borderRadius: 60,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  addText: {
-    fontSize: 30,
-  },
-});
